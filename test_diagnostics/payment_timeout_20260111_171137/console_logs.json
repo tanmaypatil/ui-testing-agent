@@ -1,0 +1,7 @@
+[
+  {
+    "type": "log",
+    "text": "[TEST MODE] Requesting 25 second delay",
+    "location": "http://localhost:5001/static/js/payment.js:57"
+  }
+]

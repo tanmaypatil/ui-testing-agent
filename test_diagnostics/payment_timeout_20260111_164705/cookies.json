@@ -1,0 +1,12 @@
+[
+  {
+    "name": "session",
+    "value": "eyJsb2dnZWRfaW4iOnRydWUsInVzZXJuYW1lIjoiZGVtbyJ9.aWOGsQ.CvugdLM3reNvCTGIJHsNxxjExrQ",
+    "domain": "localhost",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": true,
+    "secure": false,
+    "sameSite": "Lax"
+  }
+]

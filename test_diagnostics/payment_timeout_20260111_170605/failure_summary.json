@@ -1,0 +1,27 @@
+{
+  "test_name": "test_payment_timeout_with_diagnostics",
+  "timestamp": "2026-01-11T17:06:26.008026",
+  "duration_seconds": 20003.240999999998,
+  "expected_timeout_seconds": 20,
+  "backend_delay_seconds": 25,
+  "error_type": "AssertionError",
+  "error_message": "Locator expected to be visible\nActual value: False \nCall log:\nLocatorAssertions.to_be_visible with timeout 20000ms\n  - waiting for locator(\"#success-msg\")\n  -   locator resolved to <div id=\"success-msg\" class=\"success-msg\"></div>\n  -   unexpected value \"hidden\"\n  -   locator resolved to <div id=\"success-msg\" class=\"success-msg\"></div>\n  -   unexpected value \"hidden\"\n  -   locator resolved to <div id=\"success-msg\" class=\"success-msg\"></div>\n  -   unexpected value \"hidden\"\n  -   locator resolved to <div id=\"success-msg\" class=\"success-msg\"></div>\n  -   unexpected value \"hidden\"\n  -   locator resolved to <div id=\"success-msg\" class=\"success-msg\"></div>\n  -   unexpected value \"hidden\"\n  -   locator resolved to <div id=\"success-msg\" class=\"success-msg\"></div>\n  -   unexpected value \"hidden\"\n  -   locator resolved to <div id=\"success-msg\" class=\"success-msg\"></div>\n  -   unexpected value \"hidden\"\n  -   locator resolved to <div id=\"success-msg\" class=\"success-msg\"></div>\n  -   unexpected value \"hidden\"\n  -   locator resolved to <div id=\"success-msg\" class=\"success-msg\"></div>\n  -   unexpected value \"hidden\"\n  -   locator resolved to <div id=\"success-msg\" class=\"success-msg\"></div>\n  -   unexpected value \"hidden\"\n  -   locator resolved to <div id=\"success-msg\" class=\"success-msg\"></div>\n  -   unexpected value \"hidden\"\n  -   locator resolved to <div id=\"success-msg\" class=\"success-msg\"></div>\n  -   unexpected value \"hidden\"\n  -   locator resolved to <div id=\"success-msg\" class=\"success-msg\"></div>\n  -   unexpected value \"hidden\"\n  -   locator resolved to <div id=\"success-msg\" class=\"success-msg\"></div>\n  -   unexpected value \"hidden\"\n  -   locator resolved to <div id=\"success-msg\" class=\"success-msg\"></div>\n  -   unexpected value \"hidden\"\n  -   locator resolved to <div id=\"success-msg\" class=\"success-msg\"></div>\n  -   unexpected value \"hidden\"\n  -   locator resolved to <div id=\"success-msg\" class=\"success-msg\"></div>\n  -   unexpected value \"hidden\"\n  -   locator resolved to <div id=\"success-msg\" class=\"success-msg\"></div>\n  -   unexpected value \"hidden\"\n  -   locator resolved to <div id=\"success-msg\" class=\"success-msg\"></div>\n  -   unexpected value \"hidden\"\n  -   locator resolved to <div id=\"success-msg\" class=\"success-msg\"></div>\n  -   unexpected value \"hidden\"\n  -   locator resolved to <div id=\"success-msg\" class=\"success-msg\"></div>\n  -   unexpected value \"hidden\"\n  -   locator resolved to <div id=\"success-msg\" class=\"success-msg\"></div>\n  -   unexpected value \"hidden\"\n  -   locator resolved to <div id=\"success-msg\" class=\"success-msg\"></div>\n  -   unexpected value \"hidden\"\n  -   locator resolved to <div id=\"success-msg\" class=\"success-msg\"></div>\n  -   unexpected value \"hidden\"\n",
+  "browser": "chromium",
+  "current_url": "http://localhost:5001/payment.html?test_delay=25",
+  "element_states": {
+    "success_msg_visible": false,
+    "success_msg_text": "",
+    "error_msg_visible": false,
+    "error_msg_text": "",
+    "submit_btn_enabled": false,
+    "submit_btn_text": "Processing..."
+  },
+  "console_errors": [],
+  "total_network_requests": 11,
+  "test_parameters": {
+    "debtor": "123456789",
+    "creditor": "987654321",
+    "amount": 150.0,
+    "test_delay": 25
+  }
+}

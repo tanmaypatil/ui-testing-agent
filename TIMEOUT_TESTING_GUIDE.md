@@ -214,8 +214,7 @@ When a timeout occurs, the following artifacts are automatically captured:
 | **Screenshot (failure)** | `failure_screenshot.png` | UI state at timeout (20s) |
 | **Page HTML** | `page_content.html` | Full DOM at failure |
 | **Console Logs** | `console_logs.json` | JavaScript console messages/errors |
-| **Network Requests** | `network_requests.json` | All HTTP requests with headers |
-| **Network Responses** | `network_responses.json` | All HTTP responses with status |
+| **Network HAR** | `network.har` | HTTP Archive (W3C standard format) |
 | **Cookies** | `cookies.json` | Session cookies |
 | **Element States** | `element_states.json` | Visibility/text of key elements |
 | **Database State** | `database_state.json` | Recent transactions |

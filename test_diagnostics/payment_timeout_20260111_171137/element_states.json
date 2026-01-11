@@ -1,0 +1,8 @@
+{
+  "success_msg_visible": false,
+  "success_msg_text": "",
+  "error_msg_visible": false,
+  "error_msg_text": "",
+  "submit_btn_enabled": false,
+  "submit_btn_text": "Processing..."
+}

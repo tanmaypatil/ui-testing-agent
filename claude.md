@@ -106,7 +106,7 @@
   - Screenshots (before submit, at failure)
   - Full page HTML
   - Console logs (JavaScript errors)
-  - Network requests/responses
+  - Network traffic (HAR format - HTTP Archive standard)
   - Browser cookies
   - Element states (visibility, text content)
   - Database state (transaction records)
@@ -275,7 +275,7 @@ When tests fail, the following artifacts are captured:
 | Screenshots | `test_diagnostics/*/failure_screenshot.png` | Visual state at failure |
 | Page HTML | `test_diagnostics/*/page_content.html` | Full DOM for debugging |
 | Console Logs | `test_diagnostics/*/console_logs.json` | JavaScript errors |
-| Network Logs | `test_diagnostics/*/network_*.json` | HTTP requests/responses |
+| Network HAR | `test_diagnostics/*/network.har` | HTTP Archive (standard format) |
 | Cookies | `test_diagnostics/*/cookies.json` | Session state |
 | Element States | `test_diagnostics/*/element_states.json` | UI component visibility |
 | Database State | `test_diagnostics/*/database_state.json` | Transaction records |

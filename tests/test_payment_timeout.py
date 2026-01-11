@@ -53,26 +53,79 @@ def test_payment_timeout_with_diagnostics(page: Page, base_url: str):
         "location": f"{msg.location.get('url', 'unknown')}:{msg.location.get('lineNumber', 0)}"
     }))
 
-    # Enable request/response logging
-    requests_log = []
-    responses_log = []
+    # Enable request/response logging for HAR generation
+    har_entries = []
+    pending_requests = {}  # Track requests that haven't received responses
 
     def log_request(request):
-        requests_log.append({
-            "url": request.url,
-            "method": request.method,
-            "headers": dict(request.headers),
-            "post_data": request.post_data,
-            "timestamp": datetime.now().isoformat()
-        })
+        start_time = datetime.now()
+
+        # Store pending request with its start time
+        pending_requests[request.url] = {
+            "request": request,
+            "start_time": start_time
+        }
 
     def log_response(response):
-        responses_log.append({
-            "url": response.url,
-            "status": response.status,
-            "headers": dict(response.headers),
-            "timestamp": datetime.now().isoformat()
-        })
+        request = response.request
+        pending_data = pending_requests.pop(request.url, None)
+
+        if pending_data:
+            start_time = pending_data["start_time"]
+        else:
+            start_time = datetime.now()
+
+        end_time = datetime.now()
+        duration = (end_time - start_time).total_seconds() * 1000  # milliseconds
+
+        # Build HAR entry
+        entry = {
+            "startedDateTime": start_time.isoformat() + "Z",
+            "time": duration,
+            "request": {
+                "method": request.method,
+                "url": request.url,
+                "httpVersion": "HTTP/1.1",
+                "headers": [{"name": k, "value": v} for k, v in request.headers.items()],
+                "queryString": [],
+                "cookies": [],
+                "headersSize": -1,
+                "bodySize": len(request.post_data) if request.post_data else 0,
+            },
+            "response": {
+                "status": response.status,
+                "statusText": response.status_text,
+                "httpVersion": "HTTP/1.1",
+                "headers": [{"name": k, "value": v} for k, v in response.headers.items()],
+                "cookies": [],
+                "content": {
+                    "size": -1,
+                    "mimeType": response.headers.get("content-type", ""),
+                },
+                "redirectURL": "",
+                "headersSize": -1,
+                "bodySize": -1,
+            },
+            "cache": {},
+            "timings": {
+                "blocked": -1,
+                "dns": -1,
+                "connect": -1,
+                "send": 0,
+                "wait": duration,
+                "receive": 0,
+                "ssl": -1,
+            },
+        }
+
+        # Add POST data if present
+        if request.post_data:
+            entry["request"]["postData"] = {
+                "mimeType": request.headers.get("content-type", "application/json"),
+                "text": request.post_data,
+            }
+
+        har_entries.append(entry)
 
     page.on("request", log_request)
     page.on("response", log_response)
@@ -131,6 +184,10 @@ def test_payment_timeout_with_diagnostics(page: Page, base_url: str):
         failure_time = datetime.now()
         duration = (failure_time - submit_time).total_seconds()
 
+        # CRITICAL: Snapshot pending requests IMMEDIATELY before any other diagnostics
+        # to prevent race condition where responses arrive during diagnostic collection
+        pending_requests_snapshot = dict(pending_requests)  # Create a copy
+
         print(f"\n{'='*70}")
         print(f"❌ TIMEOUT OCCURRED (Expected behavior)")
         print(f"{'='*70}")
@@ -156,14 +213,94 @@ def test_payment_timeout_with_diagnostics(page: Page, base_url: str):
         )
         print(f"📋 Console logs captured ({len(console_logs)} entries)")
 
-        # 4. NETWORK LOGS - All HTTP requests and responses
-        (diagnostics_dir / "network_requests.json").write_text(
-            json.dumps(requests_log, indent=2)
+        # 4. NETWORK LOGS - HAR (HTTP Archive) format
+
+        # Add pending requests (requests without responses due to timeout)
+        # Use the snapshot to avoid race condition where responses arrive during diagnostic capture
+        for url, data in pending_requests_snapshot.items():
+            request = data["request"]
+            start_time = data["start_time"]
+            duration = (failure_time - start_time).total_seconds() * 1000
+
+            entry = {
+                "startedDateTime": start_time.isoformat() + "Z",
+                "time": duration,
+                "request": {
+                    "method": request.method,
+                    "url": request.url,
+                    "httpVersion": "HTTP/1.1",
+                    "headers": [{"name": k, "value": v} for k, v in request.headers.items()],
+                    "queryString": [],
+                    "cookies": [],
+                    "headersSize": -1,
+                    "bodySize": len(request.post_data) if request.post_data else 0,
+                },
+                "response": {
+                    "status": 0,
+                    "statusText": "TIMEOUT - No Response Received",
+                    "httpVersion": "HTTP/1.1",
+                    "headers": [],
+                    "cookies": [],
+                    "content": {
+                        "size": 0,
+                        "mimeType": "",
+                        "comment": "Request timed out before receiving response"
+                    },
+                    "redirectURL": "",
+                    "headersSize": -1,
+                    "bodySize": -1,
+                },
+                "cache": {},
+                "timings": {
+                    "blocked": -1,
+                    "dns": -1,
+                    "connect": -1,
+                    "send": 0,
+                    "wait": duration,
+                    "receive": 0,
+                    "ssl": -1,
+                },
+                "comment": "This request timed out before receiving a response"
+            }
+
+            # Add POST data if present
+            if request.post_data:
+                entry["request"]["postData"] = {
+                    "mimeType": request.headers.get("content-type", "application/json"),
+                    "text": request.post_data,
+                }
+
+            har_entries.append(entry)
+
+        har_log = {
+            "log": {
+                "version": "1.2",
+                "creator": {
+                    "name": "Playwright Timeout Test",
+                    "version": "1.0",
+                },
+                "browser": {
+                    "name": "Chromium",
+                    "version": "120.0.6099.28",
+                },
+                "pages": [
+                    {
+                        "startedDateTime": submit_time.isoformat() + "Z",
+                        "id": "page_1",
+                        "title": "Payment Timeout Test",
+                        "pageTimings": {
+                            "onContentLoad": -1,
+                            "onLoad": -1,
+                        },
+                    }
+                ],
+                "entries": har_entries,
+            }
+        }
+        (diagnostics_dir / "network.har").write_text(
+            json.dumps(har_log, indent=2)
         )
-        (diagnostics_dir / "network_responses.json").write_text(
-            json.dumps(responses_log, indent=2)
-        )
-        print(f"🌐 Network logs captured ({len(requests_log)} requests)")
+        print(f"🌐 Network HAR captured ({len(har_entries)} requests, {len(pending_requests_snapshot)} timed out)")
 
         # 5. BROWSER COOKIES - Session state
         cookies = page.context.cookies()
@@ -242,7 +379,7 @@ def test_payment_timeout_with_diagnostics(page: Page, base_url: str):
             "current_url": page.url,
             "element_states": element_states,
             "console_errors": [log for log in console_logs if log["type"] == "error"],
-            "failed_requests": [r for r in responses_log if r["status"] >= 400],
+            "total_network_requests": len(har_entries),
             "test_parameters": {
                 "debtor": "123456789",
                 "creditor": "987654321",
@@ -259,11 +396,6 @@ def test_payment_timeout_with_diagnostics(page: Page, base_url: str):
         # 9. HTML REPORT - Human-readable summary
         console_errors_html = json.dumps(
             [log for log in console_logs if log["type"] == "error"],
-            indent=2
-        ) or "[]"
-
-        failed_requests_html = json.dumps(
-            [r for r in responses_log if r["status"] >= 400],
             indent=2
         ) or "[]"
 
@@ -412,8 +544,15 @@ def test_payment_timeout_with_diagnostics(page: Page, base_url: str):
         </div>
 
         <div class="section">
-            <h2>Failed HTTP Requests</h2>
-            <pre>{failed_requests_html}</pre>
+            <h2>Network Traffic</h2>
+            <p><strong>Total Requests:</strong> {len(har_entries)}</p>
+            <p>
+                <a href="network.har" download>📥 Download HAR File</a>
+                (Import into Chrome DevTools → Network tab → right-click → "Import HAR file")
+            </p>
+            <p style="color: #666; font-size: 14px;">
+                The HAR file contains complete request/response data for all HTTP traffic during the test.
+            </p>
         </div>
 
         <div class="section">
@@ -429,8 +568,7 @@ def test_payment_timeout_with_diagnostics(page: Page, base_url: str):
                 <li><a href="failure_screenshot.png">📸 Failure Screenshot</a></li>
                 <li><a href="page_content.html">📄 Page HTML</a></li>
                 <li><a href="console_logs.json">📋 Console Logs</a></li>
-                <li><a href="network_requests.json">🌐 Network Requests</a></li>
-                <li><a href="network_responses.json">🌐 Network Responses</a></li>
+                <li><a href="network.har">🌐 Network HAR (HTTP Archive)</a> - Import into DevTools</li>
                 <li><a href="cookies.json">🍪 Cookies</a></li>
                 <li><a href="element_states.json">🎯 Element States</a></li>
                 <li><a href="database_state.json">💾 Database State</a></li>
