@@ -1,0 +1,148 @@
+[
+  {
+    "url": "http://localhost:5001/",
+    "status": 200,
+    "headers": {
+      "access-control-allow-origin": "*",
+      "connection": "close",
+      "content-length": "1322",
+      "content-type": "text/html; charset=utf-8",
+      "date": "Sun, 11 Jan 2026 11:07:38 GMT",
+      "server": "Werkzeug/3.1.5 Python/3.11.13"
+    },
+    "timestamp": "2026-01-11T16:37:38.205133"
+  },
+  {
+    "url": "http://localhost:5001/static/js/login.js",
+    "status": 200,
+    "headers": {
+      "date": "Sun, 11 Jan 2026 11:07:38 GMT, Sun, 11 Jan 2026 11:07:38 GMT",
+      "last-modified": "Sun, 11 Jan 2026 05:47:13 GMT",
+      "server": "Werkzeug/3.1.5 Python/3.11.13",
+      "etag": "\"1768110433.2774622-2089-341187504\"",
+      "content-type": "text/javascript; charset=utf-8",
+      "access-control-allow-origin": "*",
+      "cache-control": "no-cache",
+      "content-disposition": "inline; filename=login.js",
+      "connection": "close",
+      "content-length": "2089"
+    },
+    "timestamp": "2026-01-11T16:37:38.209850"
+  },
+  {
+    "url": "http://localhost:5001/static/css/styles.css",
+    "status": 200,
+    "headers": {
+      "date": "Sun, 11 Jan 2026 11:07:38 GMT, Sun, 11 Jan 2026 11:07:38 GMT",
+      "last-modified": "Sun, 11 Jan 2026 05:46:59 GMT",
+      "server": "Werkzeug/3.1.5 Python/3.11.13",
+      "etag": "\"1768110419.2404616-2343-1804147987\"",
+      "content-type": "text/css; charset=utf-8",
+      "access-control-allow-origin": "*",
+      "cache-control": "no-cache",
+      "content-disposition": "inline; filename=styles.css",
+      "connection": "close",
+      "content-length": "2343"
+    },
+    "timestamp": "2026-01-11T16:37:38.210058"
+  },
+  {
+    "url": "http://localhost:5001/login",
+    "status": 200,
+    "headers": {
+      "access-control-allow-origin": "http://localhost:5001",
+      "date": "Sun, 11 Jan 2026 11:07:38 GMT",
+      "server": "Werkzeug/3.1.5 Python/3.11.13",
+      "connection": "close",
+      "content-length": "59",
+      "vary": "Origin, Cookie",
+      "content-type": "application/json"
+    },
+    "timestamp": "2026-01-11T16:37:38.325058"
+  },
+  {
+    "url": "http://localhost:5001/payment.html",
+    "status": 200,
+    "headers": {
+      "access-control-allow-origin": "*",
+      "connection": "close",
+      "content-length": "1969",
+      "content-type": "text/html; charset=utf-8",
+      "date": "Sun, 11 Jan 2026 11:07:38 GMT",
+      "server": "Werkzeug/3.1.5 Python/3.11.13"
+    },
+    "timestamp": "2026-01-11T16:37:38.327929"
+  },
+  {
+    "url": "http://localhost:5001/static/css/styles.css",
+    "status": 304,
+    "headers": {
+      "access-control-allow-origin": "*",
+      "date": "Sun, 11 Jan 2026 11:07:38 GMT, Sun, 11 Jan 2026 11:07:38 GMT",
+      "cache-control": "no-cache",
+      "content-disposition": "inline; filename=styles.css",
+      "server": "Werkzeug/3.1.5 Python/3.11.13",
+      "connection": "close",
+      "etag": "\"1768110419.2404616-2343-1804147987\""
+    },
+    "timestamp": "2026-01-11T16:37:38.331819"
+  },
+  {
+    "url": "http://localhost:5001/static/js/payment.js",
+    "status": 200,
+    "headers": {
+      "date": "Sun, 11 Jan 2026 11:07:38 GMT, Sun, 11 Jan 2026 11:07:38 GMT",
+      "last-modified": "Sun, 11 Jan 2026 11:02:39 GMT",
+      "server": "Werkzeug/3.1.5 Python/3.11.13",
+      "etag": "\"1768129359.5816073-3654-1303780501\"",
+      "content-type": "text/javascript; charset=utf-8",
+      "access-control-allow-origin": "*",
+      "cache-control": "no-cache",
+      "content-disposition": "inline; filename=payment.js",
+      "connection": "close",
+      "content-length": "3654"
+    },
+    "timestamp": "2026-01-11T16:37:38.331958"
+  },
+  {
+    "url": "http://localhost:5001/payment.html?test_delay=25",
+    "status": 200,
+    "headers": {
+      "access-control-allow-origin": "*",
+      "connection": "close",
+      "content-length": "1969",
+      "content-type": "text/html; charset=utf-8",
+      "date": "Sun, 11 Jan 2026 11:07:38 GMT",
+      "server": "Werkzeug/3.1.5 Python/3.11.13"
+    },
+    "timestamp": "2026-01-11T16:37:38.336284"
+  },
+  {
+    "url": "http://localhost:5001/static/css/styles.css",
+    "status": 304,
+    "headers": {
+      "access-control-allow-origin": "*",
+      "date": "Sun, 11 Jan 2026 11:07:38 GMT, Sun, 11 Jan 2026 11:07:38 GMT",
+      "cache-control": "no-cache",
+      "content-disposition": "inline; filename=styles.css",
+      "server": "Werkzeug/3.1.5 Python/3.11.13",
+      "connection": "close",
+      "etag": "\"1768110419.2404616-2343-1804147987\""
+    },
+    "timestamp": "2026-01-11T16:37:38.339533"
+  },
+  {
+    "url": "http://localhost:5001/static/js/payment.js",
+    "status": 304,
+    "headers": {
+      "access-control-allow-origin": "*",
+      "date": "Sun, 11 Jan 2026 11:07:38 GMT, Sun, 11 Jan 2026 11:07:38 GMT",
+      "cache-control": "no-cache",
+      "content-disposition": "inline; filename=payment.js",
+      "server": "Werkzeug/3.1.5 Python/3.11.13",
+      "connection": "close",
+      "etag": "\"1768129359.5816073-3654-1303780501\""
+    },
+    "timestamp": "2026-01-11T16:37:38.339709"
+  }
+]

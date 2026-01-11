@@ -41,17 +41,30 @@ document.addEventListener('DOMContentLoaded', function() {
         submitBtn.disabled = true;
         submitBtn.textContent = 'Processing...';
 
+        // TEST SCENARIO: Check for test_delay parameter in URL
+        // Usage: http://localhost:5001/payment.html?test_delay=25
+        const urlParams = new URLSearchParams(window.location.search);
+        const testDelay = urlParams.get('test_delay');
+
+        const requestBody = {
+            debtor: debtor,
+            creditor: creditor,
+            amount: parseFloat(amount)
+        };
+
+        // Add test_delay if present in URL
+        if (testDelay) {
+            requestBody.test_delay = parseInt(testDelay);
+            console.log(`[TEST MODE] Requesting ${testDelay} second delay`);
+        }
+
         try {
             const response = await fetch('/payment', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({
-                    debtor: debtor,
-                    creditor: creditor,
-                    amount: parseFloat(amount)
-                })
+                body: JSON.stringify(requestBody)
             });
 
             const data = await response.json();

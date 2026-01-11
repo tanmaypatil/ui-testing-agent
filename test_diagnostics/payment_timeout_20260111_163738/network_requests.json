@@ -1,0 +1,154 @@
+[
+  {
+    "url": "http://localhost:5001/",
+    "method": "GET",
+    "headers": {
+      "upgrade-insecure-requests": "1",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/120.0.6099.28 Safari/537.36",
+      "sec-ch-ua": "\"Not_A Brand\";v=\"8\", \"Chromium\";v=\"120\", \"HeadlessChrome\";v=\"120\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"macOS\""
+    },
+    "post_data": null,
+    "timestamp": "2026-01-11T16:37:38.203080"
+  },
+  {
+    "url": "http://localhost:5001/static/css/styles.css",
+    "method": "GET",
+    "headers": {
+      "sec-ch-ua": "\"Not_A Brand\";v=\"8\", \"Chromium\";v=\"120\", \"HeadlessChrome\";v=\"120\"",
+      "referer": "http://localhost:5001/",
+      "sec-ch-ua-mobile": "?0",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/120.0.6099.28 Safari/537.36",
+      "sec-ch-ua-platform": "\"macOS\""
+    },
+    "post_data": null,
+    "timestamp": "2026-01-11T16:37:38.207557"
+  },
+  {
+    "url": "http://localhost:5001/static/js/login.js",
+    "method": "GET",
+    "headers": {
+      "sec-ch-ua": "\"Not_A Brand\";v=\"8\", \"Chromium\";v=\"120\", \"HeadlessChrome\";v=\"120\"",
+      "referer": "http://localhost:5001/",
+      "sec-ch-ua-mobile": "?0",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/120.0.6099.28 Safari/537.36",
+      "sec-ch-ua-platform": "\"macOS\""
+    },
+    "post_data": null,
+    "timestamp": "2026-01-11T16:37:38.207752"
+  },
+  {
+    "url": "http://localhost:5001/login",
+    "method": "POST",
+    "headers": {
+      "sec-ch-ua": "\"Not_A Brand\";v=\"8\", \"Chromium\";v=\"120\", \"HeadlessChrome\";v=\"120\"",
+      "sec-ch-ua-platform": "\"macOS\"",
+      "referer": "http://localhost:5001/",
+      "sec-ch-ua-mobile": "?0",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/120.0.6099.28 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "post_data": "{\"username\":\"demo\",\"password\":\"password\"}",
+    "timestamp": "2026-01-11T16:37:38.320570"
+  },
+  {
+    "url": "http://localhost:5001/payment.html",
+    "method": "GET",
+    "headers": {
+      "referer": "http://localhost:5001/",
+      "upgrade-insecure-requests": "1",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/120.0.6099.28 Safari/537.36",
+      "sec-ch-ua": "\"Not_A Brand\";v=\"8\", \"Chromium\";v=\"120\", \"HeadlessChrome\";v=\"120\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"macOS\""
+    },
+    "post_data": null,
+    "timestamp": "2026-01-11T16:37:38.325803"
+  },
+  {
+    "url": "http://localhost:5001/static/css/styles.css",
+    "method": "GET",
+    "headers": {
+      "sec-ch-ua": "\"Not_A Brand\";v=\"8\", \"Chromium\";v=\"120\", \"HeadlessChrome\";v=\"120\"",
+      "referer": "http://localhost:5001/payment.html",
+      "if-none-match": "\"1768110419.2404616-2343-1804147987\"",
+      "if-modified-since": "Sun, 11 Jan 2026 05:46:59 GMT",
+      "sec-ch-ua-mobile": "?0",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/120.0.6099.28 Safari/537.36",
+      "sec-ch-ua-platform": "\"macOS\""
+    },
+    "post_data": null,
+    "timestamp": "2026-01-11T16:37:38.331443"
+  },
+  {
+    "url": "http://localhost:5001/static/js/payment.js",
+    "method": "GET",
+    "headers": {
+      "sec-ch-ua": "\"Not_A Brand\";v=\"8\", \"Chromium\";v=\"120\", \"HeadlessChrome\";v=\"120\"",
+      "referer": "http://localhost:5001/payment.html",
+      "sec-ch-ua-mobile": "?0",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/120.0.6099.28 Safari/537.36",
+      "sec-ch-ua-platform": "\"macOS\""
+    },
+    "post_data": null,
+    "timestamp": "2026-01-11T16:37:38.331599"
+  },
+  {
+    "url": "http://localhost:5001/payment.html?test_delay=25",
+    "method": "GET",
+    "headers": {
+      "upgrade-insecure-requests": "1",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/120.0.6099.28 Safari/537.36",
+      "sec-ch-ua": "\"Not_A Brand\";v=\"8\", \"Chromium\";v=\"120\", \"HeadlessChrome\";v=\"120\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"macOS\""
+    },
+    "post_data": null,
+    "timestamp": "2026-01-11T16:37:38.335049"
+  },
+  {
+    "url": "http://localhost:5001/static/css/styles.css",
+    "method": "GET",
+    "headers": {
+      "sec-ch-ua": "\"Not_A Brand\";v=\"8\", \"Chromium\";v=\"120\", \"HeadlessChrome\";v=\"120\"",
+      "referer": "http://localhost:5001/payment.html?test_delay=25",
+      "if-none-match": "\"1768110419.2404616-2343-1804147987\"",
+      "if-modified-since": "Sun, 11 Jan 2026 05:46:59 GMT",
+      "sec-ch-ua-mobile": "?0",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/120.0.6099.28 Safari/537.36",
+      "sec-ch-ua-platform": "\"macOS\""
+    },
+    "post_data": null,
+    "timestamp": "2026-01-11T16:37:38.338945"
+  },
+  {
+    "url": "http://localhost:5001/static/js/payment.js",
+    "method": "GET",
+    "headers": {
+      "sec-ch-ua": "\"Not_A Brand\";v=\"8\", \"Chromium\";v=\"120\", \"HeadlessChrome\";v=\"120\"",
+      "referer": "http://localhost:5001/payment.html?test_delay=25",
+      "if-none-match": "\"1768129359.5816073-3654-1303780501\"",
+      "if-modified-since": "Sun, 11 Jan 2026 11:02:39 GMT",
+      "sec-ch-ua-mobile": "?0",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/120.0.6099.28 Safari/537.36",
+      "sec-ch-ua-platform": "\"macOS\""
+    },
+    "post_data": null,
+    "timestamp": "2026-01-11T16:37:38.339311"
+  },
+  {
+    "url": "http://localhost:5001/payment",
+    "method": "POST",
+    "headers": {
+      "sec-ch-ua": "\"Not_A Brand\";v=\"8\", \"Chromium\";v=\"120\", \"HeadlessChrome\";v=\"120\"",
+      "sec-ch-ua-platform": "\"macOS\"",
+      "referer": "http://localhost:5001/payment.html?test_delay=25",
+      "sec-ch-ua-mobile": "?0",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/120.0.6099.28 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "post_data": "{\"debtor\":\"123456789\",\"creditor\":\"987654321\",\"amount\":150,\"test_delay\":25}",
+    "timestamp": "2026-01-11T16:37:38.534094"
+  }
+]

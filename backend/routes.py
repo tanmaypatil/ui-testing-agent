@@ -1,4 +1,5 @@
 import uuid
+import time
 from flask import Blueprint, request, jsonify, session
 from models import db, User, Account, Transaction
 
@@ -85,6 +86,14 @@ def payment():
             'status': 'error',
             'message': f'Invalid creditor account: {creditor_id}'
         }), 400
+
+    # TEST SCENARIO: Simulate processing delay
+    # Usage: POST /payment with {"test_delay": 25} to simulate 25-second delay
+    # This allows testing timeout scenarios without modifying production code
+    test_delay = data.get('test_delay', 0)
+    if test_delay > 0:
+        print(f"[TEST MODE] Simulating {test_delay} second delay...")
+        time.sleep(test_delay)
 
     # Generate transaction ID
     transaction_id = f"txn_{uuid.uuid4().hex[:12]}"
